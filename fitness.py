@@ -35,7 +35,7 @@ def laske_bmi(paino, pituus):
 
 
 def aikuisen_rasvaprosentti(bmi, ika, sukupuoli):
-    """_summary_
+    """Laskee aikuisen kehon rasvaprosentin
 
     Args:
         bmi (float): painoindeksi
@@ -50,9 +50,28 @@ def aikuisen_rasvaprosentti(bmi, ika, sukupuoli):
     rasvaprosentti = round(rasvaprosentti)
     return rasvaprosentti
 
+def lapsen_rasvaprosentti(bmi, ikä, sukupuoli):
+    """Laskee lapsen kehon rasvaprosentin
+
+    Args:
+        bmi (float): painoindeksi
+        ika (float): lapsen ikä
+        sukupuoli (float): 1 -> poika, 0 -> tyttö
+
+    Returns:
+        float: kehon rasvaprosentti (lapsi)
+    """
+
+    rasvaprosentti = 1.51 * bmi - 0.7 * ika - 3.6 * sukupuoli + 1.4
+    rasvaprosentti = round(rasvaprosentti)
+    return rasvaprosentti
+
+
 
 oma_bmi = laske_bmi(paino, pituus)
 oma_rasvaprosentti = aikuisen_rasvaprosentti(oma_bmi, ika, sukupuoli)
 
 print('Painoindeksisi on', oma_bmi,
       'ja kehon rasvaprosentti on', oma_rasvaprosentti)
+
+
