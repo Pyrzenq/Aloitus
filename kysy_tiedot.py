@@ -8,18 +8,53 @@
 import fitness
 
 # Kysytään tiedot ja tulostetaan painoindeksi kunnes halutaan lopettaa
+bmi_lista = []
+nimilista = []
 while True: # Ikuinen silmukka, jossa ollaan kunnes annetaan tyhjä pituus
     
-    pituus_teksti = input('Pituus (cm), tyhjä lopettaa: ')
-    if pituus_teksti == '':
+    nimi = input('Nimi, tyhjä lopettaa: ')
+
+    if nimi == '':
         break
-    
+
+    nimilista.append(nimi)
+    pituus_teksti = input('Pituus (cm): ')
     paino_teksti = input('Paino (kg): ')
 
-    pituus = float(pituus_teksti)
-    paino = float(paino_teksti)
+    # Yritetään muuttaa syötetyt tekstit luvuiks
+    try:
+        pituus = float(pituus_teksti)
+        paino = float(paino_teksti)
 
-    # Lasketaan painoindeksi fitness-modulin laske_bmi-funktiolla
-    bmi = fitness.laske_bmi(paino, pituus)
+        # Lasketaan painoindeksi fitness-modulin laske_bmi-funktiolla
+        bmi = fitness.laske_bmi(paino, pituus)
 
-    print('Painoindeksi on', bmi)
+        # Luodaan monikko (tuple), jossa nimi
+        monikko = (nimi, bmi)
+
+        # Lisätään lista
+        bmi_lista.append(monikko)
+
+        # Näytetään tulokset ruudulla
+        print('Painoindeksi on', bmi)
+
+    # Jos tapahtuu virhe, ilmoitetaan käyttäjälle
+    except Exception as e:
+        print('Syötteessä oli virhe, yritä uudelleen')
+
+# Tulosta ruudulle lopuksi lista painoindekseistä
+print('Nimet ja painoindeksit olivat:', bmi_lista)
+
+# Puretaan lista ja tulostetaan se rivi-riviltä -> monikko
+for henkilo in bmi_lista:
+
+    # Monikossa on kaksi tietoa, joiden indeksit ovat 0 (ensimmäinen) ja 1 (toinen)
+    print(henkilo[0], 'painoindeksi on', henkilo[1])
+
+# Listassa olevien monikoiden määrä
+print('Listassa oli', len(bmi_lista), 'merkintää')
+
+# Harjoitus: Tee bmi-listan perusteella kuntoilijoiden aakostettu nimilista
+nimilista.sort() # Aakkosten nimilista
+print(nimilista) # Tulostetaan se
+    
