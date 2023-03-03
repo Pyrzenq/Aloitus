@@ -26,7 +26,7 @@ class Kuntoilija:
     # Metodi rasvaprosentin laskemiseen (yleinen / aikuinen)
     def rasvaprosentti(self):
         self.rasvaprosentti = fitness.aikuisen_rasvaprosentti(
-            self.bmi,self.ika, self.sukupuoli)
+            self.bmi, self.ika, self.sukupuoli)
         return self.rasvaprosentti
 
 # JunioriKuntoilija-luokka Kuntoilija-luokan aliluokka (subclass)
@@ -56,3 +56,4 @@ if __name__ == "__main__":
     # print('painoindeksi on ', kuntoilija.painoindeksi())
     print('rasvaprosentti on', juniorikuntoilija.rasvaprosentti())
 
+    
